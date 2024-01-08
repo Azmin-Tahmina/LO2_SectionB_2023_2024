@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: shakespeare-start.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Replace a paragraph with a Shakespeare quote
+    -->
+    <title>Shakespeare says...</title>
+    <script>
+        "use strict";
+
+        /**
+         * Array of Shakespeare quotes to choose from
+         * @type {string[]}
+         */
+        const quotesArray = [ "To be or not to be", "Lay on, MacDuff", "Sit you down, father; rest you" ];
+
+        /**
+         * Replaces innerHTML of selected element with random quote from array.
+         * Called when button is clicked.
+         */
+        function quoteShakespeare() {
+            let randomQuote = Math.floor(Math.random() * quotesArray.length);
+            document.getElementById("paraReplace").innerHTML = quotesArray[randomQuote];
+        }
+    </script>
+</head>
+<body>
+    <p id="paraReplace">This is the text to be replaced.</p>
+
+    <p><button id="btnQuote">Quote Shakespeare</button></p>
+<!--    or <p><input type="button" value="Quote Shakespeare" id="btnQuote" /></p>-->
+<script>
+    "use strict";
+    const button = document.getElementById("btnQuote");
+    button.addEventListener("click", quoteShakespeare);
+    // or button.onclick = quoteShakespeare;
+</script>
+</body>
+</html>

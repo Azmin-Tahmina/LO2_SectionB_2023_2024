@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--
+    Filename: countdown-from-prompt-with-validation.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Practice using loops and decision structures in JavaScript
+    -->
+    <title>Loop and Decision Structure Practice</title>
+</head>
+<body>
+    <h1>Countdown</h1>
+    <p id="output"></p>
+
+    <script>
+        "use strict";
+        const outputArea = document.getElementById("output");
+        let startingEntry = window.prompt("What value should I count down from?", "10");
+        let startingValue = parseInt(startingEntry, 10);
+
+        while (startingEntry !== null && (startingValue <= 0 || isNaN(startingValue) ||
+            isNaN(startingEntry) || parseFloat(startingEntry) !== startingValue)) {
+            // Could also use !Number.isInteger(parseFloat(startingEntry)
+            startingEntry = window.prompt("Invalid entry - must be an integer > 0.\n" +
+                "What value should I count down from?", "10");
+            startingValue = parseInt(startingEntry, 10);
+        }
+        if (startingEntry === null) {
+            startingValue = 10; // use 10 as a default if Cancel is chosen
+        }
+
+        for (let i = startingValue; i > 0; i--) {
+            let valueString;
+            switch (i) {
+                case 5:
+                    valueString = "Five";
+                    break;
+                case 4:
+                    valueString = "Four";
+                    break;
+                case 3:
+                    valueString = "Three";
+                    break;
+                case 2:
+                    valueString = "Two";
+                    break;
+                case 1:
+                    valueString = "One";
+                    break;
+                default:
+                    valueString = i;
+                    break;
+            }
+            outputArea.innerHTML += valueString + "<br />";
+        }
+        outputArea.innerHTML += "<strong>Blastoff!</strong>";
+    </script>
+</body>
+</html>

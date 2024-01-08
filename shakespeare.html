@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: shakespeare.html 
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Replace a paragraph with a Shakespeare quote
+    -->
+    <title>Shakespeare says...</title>
+    <script>
+        "use strict";
+
+        /**
+         * Array of Shakespeare quotes to choose from
+         * @type {string[]}
+         */
+        const quotesArray = [ "To be or not to be", "Lay on, MacDuff", "Sit you down, father; rest you" ];
+
+        /**
+         * Index of current quote in the array of quotes
+         * @type {number}
+         */
+        let currentQuote = 0;
+
+        // We can use the "onload" event to wait until the page is loaded
+        window.onload = init;
+
+
+        /**
+         * Set up event handlers for button and paragraph.
+         * To be called when the window is loaded (so the button and paragraph exist).
+         */
+        function init() {
+            const button = document.getElementById("btnQuote");
+            button.onclick = quoteShakespeare;
+            button.onmouseover = changeBgColor;
+            button.onmouseout = changeColorBack;
+
+            // Try using .querySelector to select the first paragraph
+            const firstPara = document.querySelector("p");
+            firstPara.onmouseover = changeBgColor;
+            firstPara.onmouseout = changeColorBack;
+        }
+
+
+        /**
+         * Replaces innerHTML of selected element with next quote from array.
+         * Called when button is clicked.
+         */
+        function quoteShakespeare() {
+            // let randomQuote = Math.floor(Math.random() * quotesArray.length);
+            debugger; // practice using debugger statement
+            document.querySelector("p").innerHTML = quotesArray[currentQuote];
+            currentQuote++;
+            if (currentQuote >= quotesArray.length) {
+                currentQuote = 0;
+            }
+        }
+
+
+        /**
+         * Change the background color and other styles of the invoking element
+         */
+        function changeBgColor() {
+            // document.getElementById("btnQuote").style.backgroundColor = "red";
+            this.style.backgroundColor = "red";
+            this.style.textTransform = "uppercase";
+            this.style.fontFamily = "fantasy";
+        }
+
+
+        /**
+         * Reset the background color and other styles of the invoking element
+         */
+        function changeColorBack() {
+            // document.getElementById("btnQuote").style.backgroundColor = "";
+            this.style.backgroundColor = "";
+            this.style.textTransform = "";
+            this.style.fontFamily = "";
+        }
+    </script>
+</head>
+<body>
+    <p>This is the text to be replaced.</p>
+
+    <p><input type="button" value="Quote Shakespeare" id="btnQuote" /></p>
+</body>
+</html>

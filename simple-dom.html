@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: simple-dom.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Look at some DOM methods
+    -->
+    <title>Simple DOM</title>
+    <script>
+        "use strict";
+
+        window.onload = init;
+
+        function init() {
+            const firstP = document.getElementById("firstPara");
+            window.alert( firstP.innerHTML );
+            firstP.innerHTML += " Alas, poor Yorick! I knew him, Horatio.";
+        }
+    </script>
+</head>
+<body>
+    <p id="firstPara">This is the first paragraph.</p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--
+    Filename: countdown-from-prompt.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Practice using loops and decision structures in JavaScript
+    -->
+    <title>Loop and Decision Structure Practice</title>
+</head>
+<body>
+    <h1>Countdown</h1>
+    <p id="output"></p>
+
+    <script>
+        "use strict";
+        const outputArea = document.getElementById("output");
+        const startingEntry = window.prompt("What value should I count down from?", "10");
+        const startingValue = parseInt(startingEntry, 10);
+        // TODO: check if a valid entry (an integer greater than 0) was entered
+
+        for (let i = startingValue; i > 0; i--) {
+            let valueString;
+            switch (i) {
+                case 5:
+                    valueString = "Five";
+                    break;
+                case 4:
+                    valueString = "Four";
+                    break;
+                case 3:
+                    valueString = "Three";
+                    break;
+                case 2:
+                    valueString = "Two";
+                    break;
+                case 1:
+                    valueString = "One";
+                    break;
+                default:
+                    valueString = i;
+                    break;
+            }
+            outputArea.innerHTML += valueString + "<br />";
+        }
+        outputArea.innerHTML += "<strong>Blastoff!</strong>";
+    </script>
+</body>
+</html>

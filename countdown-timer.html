@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: countdown-timer.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Demonstrate timers in JavaScript
+    -->
+    <title>Countdown Timer</title>
+    <script>
+        "use strict";
+
+        /**
+         * Current value of the countdown
+         * @type {number}
+         */
+        let count = 10;
+
+
+        /**
+         * Decrement the counter and update the web page
+         */
+        function decrementCounter() {
+            // decrement the counter
+            count--;
+
+            // update the web page
+            document.getElementById("count").innerHTML = count.toString();
+
+            if (count > 0) {
+                // reschedule the timer to go off in one second
+                setTimeout(decrementCounter, 1000);
+            } else {
+                document.querySelector("body").style.backgroundColor = "red";
+                count = 10;
+                document.getElementById("btnStart").disabled = false;
+            }
+        }
+
+
+        /**
+         * Reset the web page and start the timer
+         */
+        function startTimer() {
+            document.querySelector("body").style.backgroundColor = "";
+            document.getElementById("btnStart").disabled = true;
+            document.getElementById("count").innerHTML = "10";
+            setTimeout(decrementCounter, 1000);
+        }
+
+
+        /**
+         * Add a click handler to the button when the page is loaded
+         */
+        function init() {
+            document.getElementById("btnStart").onclick = startTimer;
+        }
+
+        // when the window is loaded, run the init function
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+    <p>Countdown: <span id="count">10</span></p>
+    <p><input type="button" value="Start the timer!" id="btnStart" /></p>
+</body>
+</html>

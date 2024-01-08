@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: array-methods.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Demonstrate array methods and anonymous functions
+    -->
+    <title>Array Methods</title>
+    <script>
+        "use strict";
+
+        // Sample array of numbers
+        const arValues = [1, 30, 24, 2, 3, 11];
+
+        // sort function requires two parameters, and must return positive if a > b,
+        //  negative if a < b, and zero if a equals b
+        function sortAscending(a, b) {
+            return a - b;
+        }
+
+        // Arrays by default are sorted by the Unicode values of the elements as strings
+        arValues.sort();
+        console.log("The sorted array is: " + arValues);
+
+        arValues.sort(sortAscending); // sortAscending is a callback function
+        console.log("The array sorted in ascending numerical order: " + arValues);
+
+        /*
+        arValues.sort(function(a, b) {
+            return b - a;
+        }); // anonymous function is a callback function to sort in descending order
+         */
+        // arValues.sort( (a, b) => { return b - a });
+        arValues.sort( (a, b) => b - a );
+        console.log("The array sorted in descending numerical order: " + arValues);
+
+        /*
+        const filteredArray = arValues.filter(function(item) {
+            return item >= 10;
+        });
+         */
+        const filteredArray = arValues.filter( item => (item >= 10) );
+        console.log("The filtered array is: " + filteredArray);
+
+        /*
+        const mappedArray = arValues.map(function(item) {
+            return item * 2;
+        });
+         */
+        const mappedArray = arValues.map( item => item * 2 );
+        console.log("The mapped array is: " + mappedArray);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: dateinput.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  LO2 Variable example
+    -->
+    <title>Variable test</title>
+    <script>
+        "use strict";
+
+        const weekday = window.prompt("Enter a day of the week", "Monday");
+        const year = window.prompt("Enter a year", "2024");
+        const month = window.prompt("Enter a month name", "January");
+        const day = window.prompt("Enter a day of the month", "");
+    </script>
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        "use strict";
+
+        document.getElementById("output").innerHTML =
+                "Is " + weekday + ", " + month + " " + day + ", " + year + " a valid date?";
+    </script>
+</body>
+</html>

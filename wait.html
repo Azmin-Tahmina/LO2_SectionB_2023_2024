@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <!--
+    Filename: wait.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Practice timers by checking for page inactivity
+    -->
+    <title>Timed Page</title>
+    <style>
+        #message {
+            color: red;
+        }
+
+        body {
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+<h1>Here is a page</h1>
+<p>Content is arbitrary</p>
+<p id="message"></p>
+<script>
+    "use strict";
+
+    let mainTimerId;
+    let intervalId;
+    let timeElapsed = 10;
+    const warningMessage = document.getElementById("message");
+
+
+    /**
+     * Start timer to wait 10 seconbds until displaying a message
+     */
+    function startCountingDown() {
+        mainTimerId = setTimeout(waitedTenSeconds, 10000);
+    }
+
+
+    /**
+     * Display a message that 10 seconds has elapsed
+     * and start a timer to update the message every 5 seconds
+     */
+    function waitedTenSeconds() {
+        warningMessage.innerHTML = "Page has been inactive for 10 seconds"
+            + " - click to stay";
+        timeElapsed = 10;
+        intervalId = setInterval(fiveMoreSecondsElapsed, 5000);
+    }
+
+
+    /**
+     * Update the message, and if 30 seconds has passed,
+     * redirect the web page
+     */
+    function fiveMoreSecondsElapsed() {
+        timeElapsed += 5;
+        if (timeElapsed >= 30) {
+            clearInterval(intervalId);
+            warningMessage.innerHTML = "Redirecting you...";
+            window.location = "https://saskpolytech.ca";
+        } else {
+            warningMessage.innerHTML += "<br />Now " + timeElapsed + " seconds";
+        }
+    }
+
+
+    /**
+     * Clear all timers and the message and restart the countdown
+     */
+    function resetTiming() {
+        clearTimeout(mainTimerId);
+        clearInterval(intervalId);
+        warningMessage.innerHTML = "";
+        startCountingDown();
+    }
+
+
+    document.querySelector("body").addEventListener("click", resetTiming);
+    startCountingDown();
+</script>
+</body>
+</html>

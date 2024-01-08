@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <!--
+    Filename: bonus-points.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Practice using operators and decision constructs
+    -->
+    <title>Bonus Points Calculator</title>
+</head>
+<body>
+<p id="results"></p>
+<script>
+    "use strict";
+
+    let bonusPoints;
+    let daysPlayed;
+    let textDaysPlayed = window.prompt("Days played consecutively?", "0");
+
+    if (textDaysPlayed === null) {
+        daysPlayed = 0;
+    } else {
+        daysPlayed = parseInt(textDaysPlayed, 10);
+    }
+
+    if (daysPlayed < 5) {
+        bonusPoints = daysPlayed * 100;
+    } else if (daysPlayed % 10 === 0) {
+        bonusPoints = daysPlayed * 100;
+    } else {
+        bonusPoints = 500;
+    }
+
+    document.getElementById("results").innerHTML = "You earned "
+        + bonusPoints + " bonus points";
+</script>
+</body>
+</html>

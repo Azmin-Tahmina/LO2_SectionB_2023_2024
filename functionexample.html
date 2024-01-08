@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: functionexample.html 
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Experiment with local and global variables
+    -->
+    <title>Function Example - Local and Global Variables</title>
+    <script>
+        "use strict";
+
+        // global variable
+        let total = 100;
+
+        function addUs( value1, value2 ) {
+            // total contains the sum of value1 and value2
+            const total = value1 + value2;
+
+            // Within addUs(), total refers to the local variable
+            // We cannot access the global variable named total
+            window.alert("Within the function, total is: " + total);
+
+            // Return the total
+            return total;
+        }
+    </script>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        window.alert("The function result is: " + addUs(4, 6));
+        window.alert("The value of total in the global context is: " + total);
+    </script>
+</body>
+</html>

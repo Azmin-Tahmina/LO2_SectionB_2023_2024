@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <!--
+    Filename: change-attributes.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Show how we can change the .src and .disabled properties
+    -->
+    <title>Changing attributes</title>
+</head>
+<body>
+<p>
+    <img src="images/ron.jpg" alt="CST Staff" />
+</p>
+<p>
+    <input type="button" value="Change!" id="btnChange" />
+</p>
+<script>
+    "use strict";
+
+    document.getElementById("btnChange").addEventListener("click", changeAttributes);
+
+    /**
+     * Changes the image source and the disabled property of the button.
+     * Also adds a new paragraph to the end of the body
+     * and adds card images to the new paragraph
+     * and adds event listeners to each card image
+     * to change the card image.
+     */
+    function changeAttributes() {
+        document.querySelector("img").src = "images/mike.webp";
+        document.getElementById("btnChange").disabled = true;
+
+        document.querySelector("body").innerHTML += `<p id="newPara"></p>`;
+        let newPara = document.getElementById("newPara");
+        for (let i = 2; i <= 10; i++) {
+            newPara.innerHTML += `<img src="images/${i}.png"`
+                + ` alt="Card ${i}" id="card${i}" onmouseover="changeCard(this);" />`;
+            // The line below won't work because the innerHTML is reassigned each time,
+            // replacing the previous images and their mouseover event
+            // document.getElementById("card" + i).onmouseover = changeCard;
+        }
+        // After all the images are created, assign the event handler to each image
+        for (let i = 2; i <= 10; i++) {
+            document.getElementById("card" + i).addEventListener("mouseover", changeCard);
+        }
+    }
+
+
+    /**
+     * Change source of invoking image to a blank card
+     */
+    function changeCard() {
+        this.src = "images/blank.png";
+    }
+</script>
+</body>
+</html>

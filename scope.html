@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: scope.html 
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Example of variable scopes
+    -->
+    <title>Scope example</title>
+    <script>
+        "use strict";
+
+        function myFunction() {
+            console.log("In function before declaring variable, scope is: " + scope);
+            var scope = "local"; // note: let is better to use; will give error on line above
+            console.log("In function after declaring variable, scope is: " + scope);
+        }
+    </script>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        let scope = "global";
+
+        console.log("Before calling function, scope is: " + scope);
+        myFunction();
+        console.log("After calling function, scope is: " + scope);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <!--
+    Filename: leap-year-calculator-null.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Check whether a user-entered year is a leap year
+    -->
+    <title>Leap Year Calculator</title>
+</head>
+<body>
+<h1>Leap Year Calculator</h1>
+<p id="leapYearResults"></p>
+
+<script>
+    "use strict";
+
+    const userInput = window.prompt("Enter a year to check (>0)", "2024");
+
+    if (userInput === null) {
+        document.getElementById("leapYearResults").innerHTML =
+            "You have chosen not to perform the leap year test";
+    } else {
+        const yearToCheck = parseInt(userInput, 10);
+
+        const isLeapYear = yearToCheck % 400 === 0 || (yearToCheck % 4 === 0 && yearToCheck % 100 !== 0);
+
+        document.getElementById("leapYearResults").innerHTML = userInput + (isLeapYear ? " is " : " is not ")
+            + "a leap year";
+    }
+</script>
+</body>
+</html>

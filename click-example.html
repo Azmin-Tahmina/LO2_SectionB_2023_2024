@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Filename: click-example.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Example of event handling
+    -->
+    <title>Example of Event Handling</title>
+    <script>
+        "use strict";
+
+        // global variables
+        /**
+         * The number of times the button has been clicked
+         * @type {number}
+         */
+        let clickCount = 0;
+
+
+        /**
+         * Encapsulates the functionality that handles the button click.
+         * Increments the count, then lets the user know the current count.
+         */
+        function updateCounter() {
+            clickCount++;
+            window.alert("Clicks: " + clickCount);
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <input type="button" value="Click me!" id="btnClick" />
+<!--                onclick="updateCounter();" />-->
+<!--            onclick="clickCount++; window.alert('Clicks: ' + clickCount);" />-->
+    </p>
+
+    <script>
+        "use strict";
+
+        // This is how we can assign the function to an event handler
+        // Note that we just assign the function name - no ()
+//        document.getElementById("btnClick").onclick = updateCounter;
+
+        // This is how we can assign the function to an event listener
+        document.getElementById("btnClick").addEventListener("click", updateCounter);
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <!--
+    Filename: animate.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Animate an image moving down the screen using a timer
+    -->
+    <title>Animated Image</title>
+    <style>
+        img {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<img src="images/mike.webp" alt="Michael" />
+
+<script>
+    "use strict";
+
+    let myImg = document.querySelector("img");
+    let topOfImage = 0;
+    const TIME_INTERVAL = 10;
+
+
+    /**
+     * Moves an image down the screen 1px at a time
+     */
+    function animateImage() {
+        topOfImage++;
+        if (topOfImage <= 200) {
+            myImg.style.top = `${topOfImage}px`;
+        } else {
+            clearInterval(myIntervalID);
+        }
+    }
+
+
+    let myIntervalID = setInterval(animateImage, TIME_INTERVAL);
+</script>
+</body>
+</html>

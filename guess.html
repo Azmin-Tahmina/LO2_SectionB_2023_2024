@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <!--
+    Filename: guess.html
+    Author:   Michael Grzesina (grzesinam)
+    Date:     Winter 2024
+    Purpose:  Practice using timers by writing a guessing game
+    -->
+    <title>Guess the number!</title>
+    <script>
+        "use strict";
+
+        /**
+         * Random integer from 1 to 100 for the user to guess
+         * @type {number}
+         */
+        let myNumber = Math.floor(Math.random() * 100) + 1;
+
+        /**
+         * Number of periods that have been printed in the results message
+         * @type {number}
+         */
+        let periodCount = 0;
+
+        /**
+         * Time between printing each period (in ms)
+         * @type {number}
+         */
+        const TIMEOUT_LENGTH = 250;
+
+        window.onload = init;
+
+
+        /**
+         * Add click handler to button when the window is loaded.
+         */
+        function init() {
+            document.getElementById("btnCheck").onclick = checkGuess;
+        }
+
+
+        /**
+         * Display a message with the results of the user's guess
+         * after a series of periods is displayed.
+         */
+        function checkGuess() {
+            document.getElementById("message").innerHTML = "Your guess is ";
+            setTimeout(addPeriods, TIMEOUT_LENGTH);
+            document.getElementById("btnCheck").disabled = true;
+        }
+
+
+        /**
+         * Add 5 periods to the message over time, then
+         * display a message about how the user's guess
+         * relates to the number picked.
+         */
+        function addPeriods() {
+            periodCount++;
+            if (periodCount <= 5) {
+                document.getElementById("message").innerHTML += ". ";
+                setTimeout(addPeriods, TIMEOUT_LENGTH);
+            }
+            else {
+                let guess = parseFloat(document.getElementById("numGuess").value);
+                let result = "ABSOLUTELY PERFECT!";
+                if (guess < myNumber) {
+                    result = "TOO LOW!"
+                }
+                else if (guess > myNumber) {
+                    result = "TOO HIGH!";
+                }
+                else if (Number.isNaN(guess)) {
+                    result = "NOT VALID!"
+                }
+                document.getElementById("message").innerHTML += result;
+                periodCount = 0;
+                document.getElementById("btnCheck").disabled = false;
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>I have picked a number from 1 to 100. Try to guess it!</h1>
+
+<p>
+    <label for="numGuess">Your guess</label>
+    <input type="number" id="numGuess" min="1" max="100" step="1" />
+    <input type="button" id="btnCheck" value="Check my guess!" />
+</p>
+
+<h1 id="message"></h1>
+</body>
+</html>
