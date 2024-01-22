@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Test Array</title>
+</head>
+<body>
+<p id="results"></p>
+<script>
+   "use strict"
+   // Array is an object. It has some properties/variables and methods 
+
+   let outputArea = document.getElementById("results")
+   let outputText = ""
+
+   let arr = new Array()
+   let brr = new Array(10)
+   let crr = new Array("Hello",1,2,3, 4, 35.88,true, false)
+   let crr1 = ["Hello",1,2,3, 4, 35.88,true, false]
+   let drr = []
+
+   crr.length = 5
+
+   for(let i=0;i<crr1.length;i++)
+   {
+        outputText += "Array Index "+i+" contains: "+ crr1[i]+"<br/>"
+   }
+
+    // for(let value of crr1)
+    // {
+    //     outputText += "Array contains: "+value+"<br/>"
+    // }
+
+    crr1[2] = "test"    
+    crr1[4] = 456.99
+    crr1.length = 6
+    
+    outputText += "Changed value starts...<br/>"
+
+   for(let i=0;i<crr1.length;i++)
+   {
+        outputText += "Array Index "+i+" contains : "+ crr1[i]+"<br/>"
+   }
+
+    crr1.push("Newly added element1")
+    crr1.push("Newly added element2")
+
+    outputText += "Started adding new value...<br/>"
+    for(let i=0;i<crr1.length;i++)
+   {
+        outputText += "Array Index "+i+" contains : "+ crr1[i]+"<br/>"
+   }
+
+   crr1.pop()
+   crr1.pop()
+
+   outputText += "</br>Started removing new value...<br/>"
+    for(let i=0;i<crr1.length;i++)
+   {
+        outputText += "Array Index "+i+" contains : "+ crr1[i]+"<br/>"
+   }
+
+   crr1.shift()
+
+   outputText += "</br>Started removing new value from first position...<br/>"
+    for(let i=0;i<crr1.length;i++)
+   {
+        outputText += "Array Index "+i+" contains : "+ crr1[i]+"<br/>"
+   }
+
+   crr1.unshift("Hello, I am back!")
+
+   outputText += "</br>Started adding new value at first position...<br/>"
+    for(let i=0;i<crr1.length;i++)
+   {
+        outputText += "Array Index "+i+" contains : "+ crr1[i]+"<br/>"
+   }
+
+   crr1.sort()
+
+   outputText += "</br>Started Sorting...<br/>"
+    for(let i=0;i<crr1.length;i++)
+   {
+        outputText += "Array Index "+i+" contains : "+ crr1[i]+"<br/>"
+   }
+
+   crr1.reverse()
+
+   outputText += "</br>Started reversing...<br/>"
+    for(let i=0;i<crr1.length;i++)
+   {
+        outputText += "Array Index "+i+" contains : "+ crr1[i]+"<br/>"
+   }
+   
+   let crr1Join = crr1.join(" | ")
+
+   outputText +=  "</br>Crr1 array after joining: "+crr1Join+ "</br>"
+
+   let  crr1toString = crr1.toString()
+
+   outputText +=  "</br>Crr1 array after string conversion of the array : "+crr1toString+ "</br>"
+
+   let crr1ValueCheck = crr1.includes(456.99)
+
+   if(crr1ValueCheck === true)
+   {
+       outputText += "</br>Crr1 array contains the value </br>"
+   }
+   else
+   {
+        outputText += "</br>Crr1 array does not contain the value </br>"
+   }
+
+   let crr1CheckIndex = crr1.indexOf(456.99)
+
+   outputText += "</br>Crr1 array contains the value  in this index: "+ crr1CheckIndex+ "</br>"
+
+   outputArea.innerHTML = outputText
+
+
+</script>
+</body>
+</html>
