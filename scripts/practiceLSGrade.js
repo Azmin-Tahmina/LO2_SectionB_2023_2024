@@ -1,12 +1,14 @@
+"use strict"
 // Constants
-const PASSING_GRADE = 49.5;
+
+// const PASSING_GRADE = 49.5;
 const gradeArray = [];
 
 // Global variables
 let total = 0; // total of all grades entered
 let numGrades = 0; // number of grades entered // take array length
 let numPasses = 0; // number of passing grades entered
-
+let result = ""
 // Global code
 let textGrade = window.prompt("Enter a grade from 0 to 100 (hit Cancel to stop)", "");
 
@@ -16,28 +18,17 @@ while (textGrade !== null) { // null will be returned if the user chooses Cancel
     if (grade < 0 || grade > 100 || Number.isNaN(grade) || isNaN(textGrade)) {
         window.alert("Invalid grade - must be between 0 and 100");
     } else {
-        gradeArray.push(grade);
-        //window.alert(gradeArray.toString())
-        // let result;
-
-        // numGrades++;
-        // total += grade;
-
-        // // check for passing grade
-        // if (grade >= PASSING_GRADE) {
-        //     result = "Pass";
-        //     numPasses++;
-        // } else {
-        //     result = "Fail";
-        // }
-
-        // display results so far
-           
+        gradeArray.push(grade)          
     }
     textGrade = window.prompt("Enter a grade from 0 to 100 (hit Cancel to stop)", "");
 }
 
+function passingGrade()
+{
+    return Math.floor(Math.random()*51)+50
+}
 
+let PASSING_GRADE = passingGrade()
 
 for(let values of gradeArray)
 {
@@ -59,7 +50,12 @@ window.alert("Status: " + result
 
 // display final results
 gradeArray.sort().reverse();
+
+let averagePassing = ((numPasses/gradeArray.length)*100).toFixed(1)+"%"
+
 document.getElementById("output").innerHTML = "Out of " + gradeArray.length + " total grades, "
         + "there were " + numPasses + " passing grades. "
         + "The average grade was " + (total / gradeArray.length) + ". "
-        + "The grades sorted in reverse order are " + gradeArray.join(", ") + ".";
+        + "The grades sorted in reverse order are " + gradeArray.join(", ") + "."+"</br>"
+        + "Average Passing Rate: "+ averagePassing;
+        

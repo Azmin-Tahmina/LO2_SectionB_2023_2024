@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Math/String/Function Practice Again</title>
+</head>
+<body>
+<p id="output"></p>
+<script>
+    "use strict"
+
+    let outputArea = document.getElementById("output")
+    let outputText = ""
+
+    let number = Math.random()*20+1 // range will be 0-20.99
+    number = Math.floor(number)
+
+    outputText = "Number between 0 to 20 is: "+ number+ "</br>"
+    outputText += "Power example: "+ Math.pow(number,3)+ "</br>"
+    outputText += "Squire root exampe: "+ Math.sqrt(number)+ "</br>"
+    outputText += "position of 2 in that number "+ number.toString().indexOf(2) + "</br>"
+    outputText += "</br></br>"
+
+    let exampleString = "This is an example"
+
+    outputText += "String: "+ exampleString.toString()+ "</br>"
+    outputText += "charAt example: "+ exampleString.charAt(8)+ "</br>"
+    outputText += "subString exampe: "+ exampleString.substring(9)+ "</br>"
+    outputText += "toUppercase example: "+ exampleString.toUpperCase()+ "</br>"
+    outputText += "toLowerCase exampe: "+ exampleString.toLowerCase()+ "</br>"
+    outputText += "indexOf example: "+ exampleString.indexOf("am")+ "</br>"
+    outputText += "lastIndexOf exampe: "+ exampleString.lastIndexOf("am")+ "</br>"
+    outputText += "includes exampe: "+ exampleString.includes("am")+ "</br>"
+    
+    outputText += "</br></br>"
+    outputText += "Example Function DICE "
+
+    let number_of_rolls = 3
+    let number_of_dice_sides = 6
+    let number_of_total = 0
+
+    function getRandomInt(max)
+    {
+        let randInt = Math.floor(Math.random()*max+1)
+        return randInt
+    }
+
+    for(let i=0;i<number_of_rolls;i++)
+    {
+        let randInt = getRandomInt(6)
+        outputText += "</br>Dice number "+i+" will have the value: "+randInt.toString()+"</br>"
+        //"<p id="die${i}">${roll.toString()}</p>"
+        number_of_total += randInt;
+    }
+
+    outputText += "Total of all " + number_of_rolls + " rolls: " + number_of_total;
+
+    
+    outputArea.innerHTML = outputText
+
+</script>
+</body>
+</html>
