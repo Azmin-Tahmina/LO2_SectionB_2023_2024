@@ -38,24 +38,55 @@
     let number_of_rolls = 3
     let number_of_dice_sides = 6
     let number_of_total = 0
+    let sum = 0 // global variable
 
-    function getRandomInt(max)
+    function getRandomInt(max = 6)
     {
         let randInt = Math.floor(Math.random()*max+1)
         return randInt
     }
-
+    
     for(let i=0;i<number_of_rolls;i++)
     {
-        let randInt = getRandomInt(6)
+        let randInt = getRandomInt(2)
         outputText += "</br>Dice number "+i+" will have the value: "+randInt.toString()+"</br>"
         //"<p id="die${i}">${roll.toString()}</p>"
         number_of_total += randInt;
     }
 
+    function addition(num1,num2)
+    {
+        sum = num1+num2
+        return sum
+    }
+
+    function notDeclaringGlobalVariable()
+    {
+        testVariable = "this variable is not declared!"
+    }
+
     outputText += "Total of all " + number_of_rolls + " rolls: " + number_of_total;
 
+    outputText += "</br></br>"
+    outputText += "Example function addition value of sum:  "+ addition(3,4)
+    outputText += "</br>Example function addition value of sum global:  "+ sum
+    //outputText += "</br>testVariable:  "+ testVariable // it will not work
     
+   //Scope Example
+
+    var scope = "Global"
+
+    function testScope()
+    {
+        console.log("Value of Scope from testScope function: "+ scope)
+        var scope = "Local"
+        console.log("Value of Scope from testScope function after declaring it as local: "+ scope)
+    }
+
+    console.log("Value of Scope from outside: "+ scope)
+    testScope()
+    console.log("Value of Scope after calling the function: "+ scope)
+
     outputArea.innerHTML = outputText
 
 </script>

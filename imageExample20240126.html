@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Change Image</title>
+</head>
+<body>
+<p id="output"></p>
+<p>
+    <input type="button" value="Change!" id="btnChange" />
+</p>
+<script>
+    "use strict";
+
+    let numImages = window.prompt("How many cards you want to add?",0)
+    let numCards
+    if(numImages == null)
+    {
+        numCards = 0
+    }
+    else
+    {
+        numCards = parseInt(numImages,10)
+    }
+    
+    document.querySelector("body").innerHTML += '<p id="newpara"></p>' 
+    let newpara = document.getElementById("newpara")
+    
+    for(let i = 2;i<=numCards;i++)
+    { 
+        newpara.innerHTML += `<img src="images/${i}.png" `
+                        + `alt="Card ${i}" id="card${i}" />`
+    }
+
+    //
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Grade Example Practice Again</title>
+</head>
+<body>
+<p id="output">This is example paragraph</p>
+<p id="paraReplace">This is the text to be replaced.</p>
+<!-- 
+onclick
+event = Click
+onclick  -->
+<input type="button" value="Click Me " id="btnclick"  />
+<input type="button" value="Change Quote " id="btnclickQuote"  />
+<!-- onclick="window.alert('My first event handler!');"  -->
+<!-- onclick="clickCkeck()" -->
+<!-- document.getElementById("btnclick").onclick = clickCkeck -->
+<!-- document.getElementById("btnclick").addEventListener("click",clickCkeck) -->
+   
+
+
+<script>
+    "use strict"
+
+    let clickCounter = 0
+
+    function clickCkeck()
+    {
+        clickCounter++
+        window.alert("You clicked "+clickCounter+ " times!")
+        //window.alert('My first event handler! I am calling clickCkeck');
+    }
+
+    //document.getElementById("btnclick").addEventListener("click",clickCkeck)
+
+    let p = document.getElementById("output")
+
+    window.alert(p.innerHTML)
+
+    p.innerHTML = "This is a new paragraph"
+
+    window.alert(p.innerHTML)
+
+    const quotesArray = [ "To be or not to be", "Lay on, MacDuff", "Sit you down, father; rest you" ];
+
+    function quoteShakespeare() {
+            let randomQuote = Math.floor(Math.random() * quotesArray.length);
+            document.getElementById("paraReplace").innerHTML = quotesArray[randomQuote];
+        }
+
+    const button = document.getElementById("btnclickQuote");
+    button.addEventListener("click", quoteShakespeare);
+
+
+    function changeBgColor()
+     {
+            
+        this.style.backgroundColor = "red";
+        this.style.textTransform = "uppercase";
+        this.style.fontFamily = "fantasy";
+    }
+
+    function changeColorBack() {
+           
+            this.style.backgroundColor = "";
+            this.style.textTransform = "";
+            this.style.fontFamily = "";
+        }
+
+    button.onmouseover = changeBgColor;
+    button.onmouseout = changeColorBack;
+
+
+</script>
+</body>
+</html>

@@ -31,6 +31,7 @@
      */
     function animateImage() {
         topOfImage++;
+        //myImg.style.top = `${topOfImage}px`;
         if (topOfImage <= 200) {
             myImg.style.top = `${topOfImage}px`;
         } else {
@@ -40,6 +41,7 @@
 
 
     let myIntervalID = setInterval(animateImage, TIME_INTERVAL);
+
 </script>
 </body>
 </html>

@@ -23,9 +23,16 @@ while (textGrade !== null) { // null will be returned if the user chooses Cancel
     textGrade = window.prompt("Enter a grade from 0 to 100 (hit Cancel to stop)", "");
 }
 
+// required functions
+
 function passingGrade()
 {
     return Math.floor(Math.random()*51)+50
+}
+
+function averagePassing(numPassesCount, numGradeCount, decimalPoint=0)
+{
+    return ((numPassesCount/numGradeCount)*100).toFixed(decimalPoint)+"%"
 }
 
 let PASSING_GRADE = passingGrade()
@@ -46,16 +53,18 @@ for(let values of gradeArray)
 
 window.alert("Status: " + result
 + "\nAverage so far: " + (total / gradeArray.length)
++ "\nPassing value: "+ PASSING_GRADE
 + "\nNumber passed so far: " + numPasses + " out of " + gradeArray.length );
 
 // display final results
 gradeArray.sort().reverse();
 
-let averagePassing = ((numPasses/gradeArray.length)*100).toFixed(1)+"%"
+
+//let averagePassing = ((numPasses/gradeArray.length)*100).toFixed(1)+"%"
 
 document.getElementById("output").innerHTML = "Out of " + gradeArray.length + " total grades, "
         + "there were " + numPasses + " passing grades. "
         + "The average grade was " + (total / gradeArray.length) + ". "
         + "The grades sorted in reverse order are " + gradeArray.join(", ") + "."+"</br>"
-        + "Average Passing Rate: "+ averagePassing;
+        + "Average Passing Rate: "+ averagePassing(numPasses,gradeArray.length,2);
         

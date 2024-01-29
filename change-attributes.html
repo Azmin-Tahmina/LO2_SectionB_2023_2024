@@ -20,6 +20,8 @@
 <script>
     "use strict";
 
+    let imageArray = document.querySelectorAll("img")
+
     document.getElementById("btnChange").addEventListener("click", changeAttributes);
 
     /**
@@ -30,10 +32,16 @@
      * to change the card image.
      */
     function changeAttributes() {
-        document.querySelector("img").src = "images/mike.webp";
+        //document.querySelector("img").src = "images/mike.webp";
         document.getElementById("btnChange").disabled = true;
+        // for(let i=0;i<imageArray.length;i++)
+        // {
+        //     imageArray[i].src = "images/mike.webp"
+        // }
 
+       
         document.querySelector("body").innerHTML += `<p id="newPara"></p>`;
+
         let newPara = document.getElementById("newPara");
         for (let i = 2; i <= 10; i++) {
             newPara.innerHTML += `<img src="images/${i}.png"`

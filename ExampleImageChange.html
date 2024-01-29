@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding elements to an array</title>
+</head>
+<body>
+    <p></p>
+    <img id="testImage" src="images/mike.webp" alt="CST Faculty"/>
+    <button id="testButton">Change Image</button>
+    <!-- <input  id="testButton" value="Change Image" type="button"/> -->
+</body>
+<script>
+    "use strict"
+
+    //let existingImage = document.getElementById("testImage")
+    let imageCount = window.prompt("Enter the number of image",1)
+    let button = document.getElementById("testButton")
+    let finalImgCount
+
+    if(imageCount == null || isNaN(imageCount) || Number.isNaN(imageCount))
+    {
+        imageCount = window.prompt("You have entered a invalid number.\nEnter the number of image",2)
+    }
+    else
+    {
+        if(finalImgCount<2 || finalImgCount >10)
+        {
+            imageCount = window.prompt("You have entered a invalid number.\nEnter the number of image",2)
+        }
+        else
+        {
+            finalImgCount = parseInt(imageCount,10)
+        }
+        
+    }
+
+   
+
+
+    function createImage()
+    {
+        document.querySelector("body").innerHTML += `<p id="newPara"></p>`;
+        let newPara = document.getElementById("newPara");
+
+
+        for(let i = 2;i<=finalImgCount;i++)
+        {
+            //document.querySelector("body").innerHTML += `<img src="images/ron.jpg" alt="cst instructor" />`
+            newPara.innerHTML += `<img src="images/${i}.png"`
+            + ` alt="Card ${i}" id="card${i}" />`;
+            // onmouseover="changeCard(this);"
+
+        }
+
+        for (let i = 2; i <= finalImgCount; i++) 
+        {
+            document.getElementById("card" + i).addEventListener("mouseover", imageChange);
+        }
+
+        
+        // document.querySelector("body").innerHTML += `<img src="images/ron.jpg" alt="cst instructor" />`
+        // document.querySelector("body").innerHTML += `<img src="images/ron.jpg" alt="cst instructor" />`
+        // document.querySelector("body").innerHTML += `<img src="images/ron.jpg" alt="cst instructor" />`
+    }
+
+
+    function imageChange()
+    {
+        // querySelector - returns one object
+        // querySelectorAll -> returns array of object
+        //document.querySelector("img").src = "images/"
+       // existingImage.src = "images/ron.jpg"
+
+    //    document.querySelector("img").src = "images/ron.jpg"
+    //    button.disabled = true
+        this.src = "images/blank.png"
+        
+
+    }
+
+    // 1,2, 3,4 , 5, 6
+    // take a random number
+   
+
+    //button.addEventListener("click",imageChange)
+
+    button.onclick = createImage
+
+
+
+</script>
+</html>

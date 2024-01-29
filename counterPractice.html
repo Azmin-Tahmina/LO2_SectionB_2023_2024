@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SetTimeout and setInterval Example with counter </title>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+   <p>Countdown: <span id="count" style="color:blue">10</span></p>
+   <p><input type="button" value="Start the timer!" id="btnStart" /></p>
+</body>
+<script>
+    "use strict"
+
+    let count = 10
+    let button =  document.getElementById("btnStart")
+   // document.getElementById("btnStart")
+    let timeoutID;
+    document.getElementById("count").innerHTML = count
+
+    function decrementCounter()
+    {
+        count--
+        
+        // if(count > 0)
+        // {
+        //     setTimeout(decrementCounter,1000)
+        // }
+        // else
+        // {
+        //     document.querySelector("body").style.background = "red" 
+        //     document.getElementById("count").style.color = "pink"
+        //     button.disabled = false
+        //     count = 10
+
+        // }
+        
+        if(count<0)
+        {
+            clearInterval(timeoutID)
+            document.querySelector("body").style.background = "red" 
+            document.getElementById("count").style.color = "pink"
+            button.disabled = false
+            count = 10
+        }
+        document.getElementById("count").innerHTML = count
+        // if(count>0)
+        // {
+        //     setTimeout(decrementCounter,1000)
+        // }
+        // else
+        // {
+        //     document.querySelector("body").style.backgroundColor = "red";
+        //     count = 10;
+        //     document.getElementById("btnStart").disabled = false;
+
+        // }
+
+        // if(count<=0)
+        // {
+        //     clearInterval(timeoutID)
+        //     document.querySelector("body").style.backgroundColor = "blue"
+        //     count = 10
+        //     document.getElementById("btnStart").disabled = false
+        // }
+        
+    }
+
+    function startTimer()
+    {
+        // document.querySelector("body").style.backgroundColor = "";
+        // document.getElementById("btnStart").disabled = true;
+        // document.getElementById("count").innerHTML = "10";
+        // //setTimeout(decrementCounter,1000)
+        // timeoutID = setInterval(decrementCounter,1000)
+
+       button.disabled = true
+       // setTimeout(decrementCounter,1000)
+       timeoutID = setInterval(decrementCounter,1000)
+
+    }
+
+    
+    // function init(){
+    //     document.getElementById("btnStart").onclick = startTimer
+    // }
+
+    //window.onload = init()
+
+    window.onload = function()
+    {
+        document.getElementById("btnStart").onclick = startTimer
+    }
+</script>
+</html>
